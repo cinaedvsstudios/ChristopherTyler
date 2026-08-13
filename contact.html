@@ -1,5 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contact | Christopher Tyler</title></head>
-<body><h1>GET IN TOUCH</h1><p>Christopher Tyler · Berlin, Germany</p><p><a href="mailto:kristoffertyler@gmail.com">kristoffertyler@gmail.com</a></p><p><a href="tel:+4915510902908">+49 155 10902908</a></p><p><a href="https://www.linkedin.com/in/christopher-tyler-5ab8b683">LinkedIn</a></p></body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Christopher Tyler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-offwhite': '#F4F4F0',
+                        'brand-grey': '#8A8D91',
+                        'brand-charcoal': '#1C1D21',
+                        'brand-cyan': '#00F0FF',
+                        'brand-lime': '#D4FF00',
+                        'brand-violet': '#8A2BE2',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #F4F4F0;
+            margin: 0;
+            padding: 4px;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-panel {
+            background-color: #1C1D21;
+            border: 4px solid #000000;
+            border-radius: 4px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1C1D21; }
+        ::-webkit-scrollbar-thumb { background: #8A8D91; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00F0FF; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <div class="content-panel p-8 md:p-12 lg:p-16 max-w-5xl mx-auto w-full">
+        <header class="mb-12 border-b border-brand-grey border-opacity-30 pb-6">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-brand-offwhite mb-2">GET IN TOUCH</h1>
+            <p class="font-mono text-brand-cyan text-sm md:text-base tracking-widest uppercase">Creative AI · Motion · Digital Production</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
+            <section class="space-y-8">
+                <div>
+                    <h2 class="text-xs font-mono text-brand-grey tracking-widest uppercase mb-2">Email</h2>
+                    <a href="mailto:kristoffertyler@gmail.com" class="text-xl md:text-2xl font-medium text-brand-offwhite hover:text-brand-lime transition-colors inline-block border-b border-transparent hover:border-brand-lime pb-1">kristoffertyler@gmail.com</a>
+                </div>
+
+                <div>
+                    <h2 class="text-xs font-mono text-brand-grey tracking-widest uppercase mb-2">Phone</h2>
+                    <a href="tel:+4915510902908" class="text-lg text-brand-offwhite opacity-90 hover:text-brand-lime transition-colors">+49 155 10902908</a>
+                </div>
+
+                <div>
+                    <h2 class="text-xs font-mono text-brand-grey tracking-widest uppercase mb-2">Location</h2>
+                    <p class="text-lg text-brand-offwhite opacity-90">Berlin, Germany</p>
+                </div>
+
+                <div>
+                    <h2 class="text-xs font-mono text-brand-grey tracking-widest uppercase mb-3">Network</h2>
+                    <ul class="space-y-3 font-mono text-sm">
+                        <li>
+                            <a href="https://www.linkedin.com/in/christopher-tyler-5ab8b683" target="_blank" rel="noopener noreferrer" class="text-brand-cyan hover:text-brand-offwhite transition-colors flex items-center group">
+                                <span class="w-4 h-px bg-brand-cyan mr-3 group-hover:w-8 group-hover:bg-brand-offwhite transition-all duration-300"></span>
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/cinaedvsstudios" target="_blank" rel="noopener noreferrer" class="text-brand-violet hover:text-brand-offwhite transition-colors flex items-center group">
+                                <span class="w-4 h-px bg-brand-violet mr-3 group-hover:w-8 group-hover:bg-brand-offwhite transition-all duration-300"></span>
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="prose prose-invert max-w-none text-brand-offwhite opacity-90">
+                <p class="text-lg leading-relaxed mb-6 font-light">I work across creative AI, visual storytelling, motion, interactive content and digital production.</p>
+                <p class="mb-6 leading-relaxed">My projects range from AI-assisted cinematic sequences and game cutscenes to promotional content, creative production tools and internal AI launches. I am particularly interested in turning generative tools into practical production workflows that move from concept and iteration through to finished, reusable outputs.</p>
+                <p class="leading-relaxed">Alongside creative work, I bring an operational mindset: understanding the audience, structuring processes, testing tools, documenting what works and making new technology easier for other people to use.</p>
+            </section>
+        </div>
+    </div>
+
+</body>
 </html>
