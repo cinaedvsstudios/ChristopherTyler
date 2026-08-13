@@ -29,32 +29,12 @@
     <style>
         * { box-sizing: border-box; }
         html, body { width: 100%; height: 100%; }
-        body {
-            background-color: #F4F4F0;
-            color: #1C1D21;
-            scroll-behavior: smooth;
-        }
-        .nav-link { position: relative; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #00F0FF;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after { width: 100%; }
-        .bg-grid {
-            background-color: #F4F4F0;
-            background-image: url('bg.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        iframe { transition: opacity 0.2s ease; }
+        body { background-color:#F4F4F0; color:#1C1D21; scroll-behavior:smooth; }
+        .nav-link { position:relative; }
+        .nav-link::after { content:''; position:absolute; width:0; height:2px; bottom:-4px; left:0; background-color:#00F0FF; transition:width .3s ease; }
+        .nav-link:hover::after { width:100%; }
+        .bg-grid { background-color:#F4F4F0; background-image:url('bg.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat; background-attachment:fixed; }
+        iframe { transition:opacity .2s ease; }
     </style>
 </head>
 <body class="font-sans antialiased h-screen overflow-hidden flex flex-col bg-grid">
@@ -73,9 +53,7 @@
         </header>
 
         <div class="relative w-full flex-grow min-h-0 mt-2">
-            <button id="back-btn" onclick="goHome()" style="display:none" class="absolute -top-6 left-0 font-mono text-xs font-bold text-brand-charcoal hover:text-brand-violet transition-colors flex items-center z-10 cursor-pointer">
-                <span class="mr-1">←</span> BACK
-            </button>
+            <button id="back-btn" onclick="goHome()" style="display:none" class="absolute -top-6 left-0 font-mono text-xs font-bold text-brand-charcoal hover:text-brand-violet transition-colors flex items-center z-10 cursor-pointer"><span class="mr-1">←</span> BACK</button>
             <iframe id="portfolio-frame" name="portfolio-frame" src="indexpanel.html" title="Portfolio Content" class="absolute inset-0 w-full h-full bg-black rounded-xl shadow-2xl border-4 border-black" frameborder="0"></iframe>
         </div>
     </main>
@@ -90,35 +68,84 @@
         const frame = document.getElementById('portfolio-frame');
         const backBtn = document.getElementById('back-btn');
 
-        function showBack() {
-            backBtn.style.display = 'inline-flex';
-        }
+        const primaryVideo = {
+            'backroom/index.html': { src:'promo.mp4', type:'video/mp4' },
+            'calloftheconch/index.html': { src:'introvideo.ogv', type:'video/ogg' },
+            'cremationcountdown/index.html': { src:'gameplay.mp4', type:'video/mp4' },
+            'christinadior/index.html': { src:'darkroom.mp4', type:'video/mp4' }
+        };
 
-        function showIndex() {
-            backBtn.style.display = 'none';
-        }
+        function showBack(){ backBtn.style.display='inline-flex'; }
+        function showIndex(){ backBtn.style.display='none'; }
 
-        function loadProject(url) {
-            if (!url) return;
-            frame.style.opacity = '0';
-            frame.src = url;
+        function loadProject(url){
+            if(!url) return;
+            frame.style.opacity='0';
+            frame.src=url;
             showBack();
         }
 
-        function goHome() {
-            frame.style.opacity = '0';
-            frame.src = 'indexpanel.html';
+        function goHome(){
+            frame.style.opacity='0';
+            frame.src='indexpanel.html';
             showIndex();
         }
 
-        frame.addEventListener('load', function() {
-            frame.style.opacity = '1';
+        function repairProjectFrame(){
+            try {
+                const doc = frame.contentDocument;
+                if(!doc) return;
+
+                const layout = doc.querySelector('.project-layout');
+                if(layout){
+                    const fix = doc.createElement('style');
+                    fix.textContent = `
+                        *,*::before,*::after{box-sizing:border-box}
+                        html,body{width:100%!important;height:100%!important;min-height:0!important}
+                        body{height:100%!important;min-height:0!important;overflow:hidden!important}
+                        .project-layout{height:100%!important;min-height:0!important;min-width:0!important;overflow:hidden!important}
+                        .left-column{grid-template-rows:auto minmax(0,1fr)!important;min-height:0!important;min-width:0!important;overflow:hidden!important}
+                        .panel,.text-panel,.image-panel{min-height:0!important;min-width:0!important}
+                        .text-panel,.image-panel{overflow-y:auto!important;overscroll-behavior:contain;scrollbar-gutter:stable}
+                        video{background:#000}
+                    `;
+                    doc.head.appendChild(fix);
+                }
+
+                let page = frame.getAttribute('src') || '';
+                try {
+                    const livePath = frame.contentWindow.location.pathname.split('/ChristopherTyler/').pop();
+                    if(livePath) page = livePath;
+                } catch(e) {}
+
+                const media = primaryVideo[page];
+                const video = doc.querySelector('.video-panel video');
+                if(video && media){
+                    let source = video.querySelector('source');
+                    if(!source){ source = doc.createElement('source'); video.appendChild(source); }
+                    if(source.getAttribute('src') !== media.src){
+                        source.setAttribute('src', media.src);
+                        source.setAttribute('type', media.type);
+                        video.setAttribute('preload','metadata');
+                        video.setAttribute('controls','');
+                        video.muted = true;
+                        video.load();
+                    }
+                    const attempt = video.play();
+                    if(attempt && typeof attempt.catch === 'function') attempt.catch(()=>{});
+                }
+            } catch(e) {
+                console.warn('Portfolio frame repair skipped:', e);
+            }
+        }
+
+        frame.addEventListener('load', function(){
+            repairProjectFrame();
+            frame.style.opacity='1';
         });
 
-        window.addEventListener('message', function(event) {
-            if (event.data && event.data.action === 'loadProject' && event.data.url) {
-                loadProject(event.data.url);
-            }
+        window.addEventListener('message', function(event){
+            if(event.data && event.data.action==='loadProject' && event.data.url) loadProject(event.data.url);
         });
     </script>
 </body>
