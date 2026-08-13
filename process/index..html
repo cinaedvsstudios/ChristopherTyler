@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Process + Tools | Christopher Tyler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-offwhite': '#F4F4F0',
+                        'brand-grey': '#8A8D91',
+                        'brand-charcoal': '#1C1D21',
+                        'brand-cyan': '#00F0FF',
+                        'brand-lime': '#D4FF00',
+                        'brand-violet': '#8A2BE2',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000000;
+            color: #F4F4F0;
+            margin: 0;
+            padding: 4px;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-panel {
+            background-color: #1C1D21;
+            border: 4px solid #000000;
+            border-radius: 4px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1C1D21; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8A8D91; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00F0FF; 
+        }
+
+        /* Interactive Process Row */
+        .process-row {
+            border-bottom: 1px solid rgba(138, 141, 145, 0.2);
+        }
+        .process-row:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <div class="content-panel p-8 md:p-12 lg:p-16 max-w-5xl mx-auto w-full">
+        
+        <!-- Header -->
+        <header class="mb-16 border-b border-brand-grey border-opacity-30 pb-8">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tighter text-brand-offwhite mb-3">
+                PROCESS + TOOLS
+            </h1>
+            <p class="font-mono text-brand-cyan text-sm md:text-base tracking-widest uppercase">
+                AI as a production workflow, not a one-off output.
+            </p>
+        </header>
+
+        <section class="mb-24">
+            <div class="flex items-center space-x-4 mb-8">
+                <span class="w-8 h-px bg-brand-lime"></span>
+                <h2 class="text-lg font-mono tracking-widest uppercase text-brand-offwhite">The Production Chain</h2>
+            </div>
+            
+            <div class="bg-black border border-brand-grey border-opacity-20 rounded-lg p-2 md:p-6 shadow-inner">
+                
+                <!-- 01 CONCEPT -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-lime text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">01</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-lime transition-colors">CONCEPT</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Define the core narrative, visual style, and constraints before touching any AI tools. Establish what the output actually needs to achieve.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 REFERENCES -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-cyan text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">02</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-cyan transition-colors">REFERENCES</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Curate mood boards and visual benchmarks to guide prompt engineering, establishing clear style targets and color palettes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03 PROMPT DEVELOPMENT -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-violet text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">03</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-violet transition-colors">PROMPT DEVELOPMENT</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Translate creative direction into structured prompts covering subject, composition, styling, lighting, camera language and continuity requirements.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 04 GENERATION -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-lime text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">04</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-lime transition-colors">GENERATION</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Execute initial batches, testing different models and parameters to find the highest baseline quality and stylistic match.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 05 ITERATION -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-cyan text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">05</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-cyan transition-colors">ITERATION</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Compare outputs against references, identify drift or weaknesses, then adjust the prompt, source material or tool rather than accepting the first usable generation.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 06 CONSISTENCY -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-violet text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">06</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-violet transition-colors">CONSISTENCY</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Maintain continuity across characters, costumes, environments, lighting and visual language so assets belong to the same production.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 07 MOTION -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-lime text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">07</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-lime transition-colors">MOTION</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Test generated assets for animation and video use, considering stability, source-frame quality, movement and final format.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 08 EDIT -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-cyan text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">08</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-cyan transition-colors">EDIT</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Sequence and pace the generated assets within an NLE, treating them as traditional footage or frames to build the narrative.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 09 SOUND -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-violet text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">09</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-violet transition-colors">SOUND</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Apply sound design, foley, and music to ground the AI-generated visuals, add weight, and enhance the overall emotional impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 DELIVERY + REUSE -->
+                <div class="process-row group py-4 px-4 cursor-pointer hover:bg-[#1C1D21] transition-colors rounded-md">
+                    <div class="flex items-center">
+                        <span class="font-mono text-brand-lime text-sm w-12 opacity-80 group-hover:opacity-100 transition-opacity">10</span>
+                        <h3 class="text-xl md:text-2xl font-bold text-brand-offwhite group-hover:text-brand-lime transition-colors">DELIVERY + REUSE</h3>
+                    </div>
+                    <div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-300 ease-in-out">
+                        <div class="overflow-hidden">
+                            <p class="pt-3 text-brand-grey text-sm md:text-base leading-relaxed pl-12 pr-4">
+                                Finalize outputs for multiple formats and document successful workflows, prompts, and seeds for future scalability and asset variants.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <div class="flex items-center space-x-4 mb-8">
+                <span class="w-8 h-px bg-brand-cyan"></span>
+                <h2 class="text-lg font-mono tracking-widest uppercase text-brand-offwhite">Tool Ecosystem</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Generative AI -->
+                <div class="bg-black/50 p-6 rounded-lg border border-brand-grey/10">
+                    <h3 class="font-mono text-sm tracking-widest uppercase text-brand-cyan mb-4 pb-2 border-b border-brand-grey/20">Generative AI</h3>
+                    <ul class="text-brand-offwhite opacity-90 space-y-2 text-sm md:text-base">
+                        <li>Midjourney v6</li>
+                        <li>Runway Gen-2</li>
+                        <li>Magnific AI</li>
+                        <li>Google Gemini</li>
+                        <li>Google Imagen</li>
+                    </ul>
+                </div>
+
+                <!-- Motion + Video -->
+                <div class="bg-black/50 p-6 rounded-lg border border-brand-grey/10">
+                    <h3 class="font-mono text-sm tracking-widest uppercase text-brand-cyan mb-4 pb-2 border-b border-brand-grey/20">Motion + Video</h3>
+                    <ul class="text-brand-offwhite opacity-90 space-y-2 text-sm md:text-base">
+                        <li>Adobe Premiere Pro</li>
+                        <li>Adobe After Effects</li>
+                        <li>DaVinci Resolve</li>
+                        <li>Topaz Video AI</li>
+                    </ul>
+                </div>
+
+                <!-- Image + Design -->
+                <div class="bg-black/50 p-6 rounded-lg border border-brand-grey/10">
+                    <h3 class="font-mono text-sm tracking-widest uppercase text-brand-cyan mb-4 pb-2 border-b border-brand-grey/20">Image + Design</h3>
+                    <ul class="text-brand-offwhite opacity-90 space-y-2 text-sm md:text-base">
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+
+                <!-- Interactive + Production -->
+                <div class="bg-black/50 p-6 rounded-lg border border-brand-grey/10">
+                    <h3 class="font-mono text-sm tracking-widest uppercase text-brand-cyan mb-4 pb-2 border-b border-brand-grey/20">Interactive + Production</h3>
+                    <ul class="text-brand-offwhite opacity-90 space-y-2 text-sm md:text-base">
+                        <li>Godot Engine</li>
+                        <li>HTML / CSS / JS</li>
+                        <li>GitHub</li>
+                        <li>Notion</li>
+                    </ul>
+                </div>
+
+                <!-- Exploring / Testing -->
+                <div class="bg-black/50 p-6 rounded-lg border border-brand-violet/30 lg:col-span-2">
+                    <h3 class="font-mono text-sm tracking-widest uppercase text-brand-violet mb-4 pb-2 border-b border-brand-violet/20 flex items-center">
+                        <span class="mr-2">🔬</span> Exploring / Testing
+                    </h3>
+                    <p class="text-brand-grey text-sm mb-3">Tools currently in R&D phase; testing for production viability:</p>
+                    <ul class="text-brand-offwhite opacity-90 flex flex-wrap gap-x-6 gap-y-2 text-sm md:text-base">
+                        <li>Google Veo</li>
+                        <li>ComfyUI (Local SDXL workflows)</li>
+                        <li>Sora (Access pending/research)</li>
+                        <li>ElevenLabs (Advanced voice cloning)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section>
+            <div class="flex items-center space-x-4 mb-8">
+                <span class="w-8 h-px bg-brand-violet"></span>
+                <h2 class="text-lg font-mono tracking-widest uppercase text-brand-offwhite">How I Evaluate A Tool</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-brand-charcoal border border-brand-grey/20 rounded-lg p-6 md:p-10 shadow-lg relative overflow-hidden">
+                <!-- Decorative background glow -->
+                <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-violet opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-lime mr-3"></span> QUALITY
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Does it produce usable output?</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan mr-3"></span> CONTROL
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Can I reliably direct the result?</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-violet mr-3"></span> CONSISTENCY
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Does it hold characters/style over multiple outputs?</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-lime mr-3"></span> SPEED
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Does it improve production rather than add friction?</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-cyan mr-3"></span> REUSE
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Can the workflow scale to variants or future assets?</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-brand-offwhite mb-1 flex items-center">
+                        <span class="w-2 h-2 rounded-full bg-brand-violet mr-3"></span> FIT
+                    </h4>
+                    <p class="text-brand-grey text-sm pl-5 mb-6">Is this actually the right tool for this particular job?</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>
